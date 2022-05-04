@@ -13,7 +13,7 @@ resource "aws_neptune_cluster" "neptune_cluster" {
   storage_encrypted                    = true
   neptune_subnet_group_name            = aws_neptune_subnet_group.neptune_sg.name
   neptune_cluster_parameter_group_name = aws_neptune_cluster_parameter_group.cluster_pg.name
-  vpc_security_group_ids               = aws_security_group.sg
+  vpc_security_group_ids               = [aws_security_group.sg.id]
   tags                                 = var.tags
 }
 
