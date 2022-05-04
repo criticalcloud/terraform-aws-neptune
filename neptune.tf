@@ -11,8 +11,8 @@ resource "aws_neptune_cluster" "neptune_cluster" {
   apply_immediately                    = true
   copy_tags_to_snapshot                = true
   storage_encrypted                    = true
-  neptune_subnet_group_name            = aws_neptune_subnet_group.neptune_sg
-  neptune_cluster_parameter_group_name = aws_neptune_cluster_parameter_group.cluster_pg
+  neptune_subnet_group_name            = aws_neptune_subnet_group.neptune_sg.name
+  neptune_cluster_parameter_group_name = aws_neptune_cluster_parameter_group.cluster_pg.name
   vpc_security_group_ids               = aws_security_group.sg
   tags                                 = var.tags
 }
@@ -24,8 +24,8 @@ resource "aws_neptune_cluster_instance" "neptune_instance" {
   engine                       = "neptune"
   instance_class               = var.instance_type
   apply_immediately            = true
-  neptune_subnet_group_name    = aws_neptune_subnet_group.neptune_sg
-  neptune_parameter_group_name = aws_neptune_parameter_group.node_pg
+  neptune_subnet_group_name    = aws_neptune_subnet_group.neptune_sg.name
+  neptune_parameter_group_name = aws_neptune_parameter_group.node_pg.name
   tags                         = var.tags
 }
 
@@ -52,7 +52,7 @@ resource "aws_neptune_parameter_group" "node_pg" {
 // cria a subnet group para o cluster/nodes
 resource "aws_neptune_subnet_group" "neptune_sg" {
   name       = "main"
-  subnet_ids = [data.aws_subnets.subnets.ids]
+  subnet_ids = data.aws_subnets.subnets.ids
 
   tags = var.tags
 }
