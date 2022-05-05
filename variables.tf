@@ -31,3 +31,7 @@ variable "subnet_cidr" {
   type    = list(any)
   default = [""]
 }
+
+variable "backup_retention_period" {
+  default = 7
+}
