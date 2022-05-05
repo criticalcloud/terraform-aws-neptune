@@ -20,7 +20,7 @@ resource "aws_neptune_cluster" "neptune_cluster" {
 // cria os nodes do cluster
 resource "aws_neptune_cluster_instance" "neptune_instance" {
   count                        = var.number_of_instances
-  cluster_identifier           = "node-${var.cluster_name}-${count.index}"
+  cluster_identifier           = var.cluster_name
   engine                       = "neptune"
   instance_class               = var.instance_type
   apply_immediately            = true
@@ -30,12 +30,11 @@ resource "aws_neptune_cluster_instance" "neptune_instance" {
 }
 
 // cria o endpoint de acesso
-resource "aws_neptune_cluster_endpoint" "neptune_endpoint" {
-  cluster_identifier          = aws_neptune_cluster.neptune_cluster.cluster_identifier
-  cluster_endpoint_identifier = var.cluster_name
-  endpoint_type               = "ANY"
-  tags                        = var.tags
-}
+//resource "aws_neptune_cluster_endpoint" "neptune_endpoint" {
+//  cluster_identifier          = aws_neptune_cluster.neptune_cluster.cluster_identifier
+//  cluster_endpoint_identifier = var.cluster_name
+//  endpoint_type               = "ANY"
+//}
 
 // cria o parameter group do cluster
 resource "aws_neptune_cluster_parameter_group" "cluster_pg" {
