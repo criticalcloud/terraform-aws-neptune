@@ -7,7 +7,7 @@ resource "aws_neptune_cluster" "neptune_cluster" {
   preferred_backup_window              = "03:00-06:00"
   skip_final_snapshot                  = false
   deletion_protection                  = true
-  iam_database_authentication_enabled  = true
+  iam_database_authentication_enabled  = false
   apply_immediately                    = true
   copy_tags_to_snapshot                = true
   storage_encrypted                    = true
