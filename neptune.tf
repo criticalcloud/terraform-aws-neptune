@@ -51,7 +51,7 @@ resource "aws_neptune_parameter_group" "node_pg" {
 
 // cria a subnet group para o cluster/nodes
 resource "aws_neptune_subnet_group" "neptune_sg" {
-  name       = "main"
+  name       = "sg-${var.cluster_name}"
   subnet_ids = data.aws_subnets.subnets.ids
 
   tags = var.tags
