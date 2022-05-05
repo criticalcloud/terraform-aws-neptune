@@ -20,7 +20,7 @@ resource "aws_neptune_cluster" "neptune_cluster" {
 // cria os nodes do cluster
 resource "aws_neptune_cluster_instance" "neptune_instance" {
   count                        = var.number_of_instances
-  cluster_identifier           = var.cluster_name
+  cluster_identifier           = aws_neptune_cluster.neptune_cluster.id
   engine                       = "neptune"
   instance_class               = var.instance_type
   apply_immediately            = true
