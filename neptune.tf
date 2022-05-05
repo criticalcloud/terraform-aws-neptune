@@ -34,6 +34,7 @@ resource "aws_neptune_cluster_endpoint" "neptune_endpoint" {
   cluster_identifier          = aws_neptune_cluster.neptune_cluster.cluster_identifier
   cluster_endpoint_identifier = var.cluster_name
   endpoint_type               = "ANY"
+  tags                        = var.tags
 }
 
 // cria o parameter group do cluster
