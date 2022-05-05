@@ -5,7 +5,7 @@ resource "aws_neptune_cluster" "neptune_cluster" {
   engine_version                       = var.neptune_version
   backup_retention_period              = var.backup_retention_period
   preferred_backup_window              = "03:00-06:00"
-  skip_final_snapshot                  = false
+  skip_final_snapshot                  = true
   deletion_protection                  = true
   iam_database_authentication_enabled  = false
   apply_immediately                    = true
