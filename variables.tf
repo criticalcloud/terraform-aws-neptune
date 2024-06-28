@@ -4,7 +4,10 @@ variable "cluster_name" {
 
 variable "neptune_version" {
   type    = string
-  default = "1.1.1.0.R1"
+}
+
+variable "neptune_family" {
+  type    = string
 }
 
 variable "number_of_instances" {
