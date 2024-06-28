@@ -38,14 +38,14 @@ resource "aws_neptune_cluster_instance" "neptune_instance" {
 
 // cria o parameter group do cluster
 resource "aws_neptune_cluster_parameter_group" "cluster_pg" {
-  family      = "neptune1"
+  family      = var.neptune_family
   name        = "cluster-pg-${var.cluster_name}"
   description = "Neptune cluster parameter group"
 }
 
 // cria o parameter group do node
 resource "aws_neptune_parameter_group" "node_pg" {
-  family = "neptune1"
+  family = var.neptune_family
   name   = "node-pg-${var.cluster_name}"
 }
 
